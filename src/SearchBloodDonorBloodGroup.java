@@ -47,7 +47,7 @@ public class SearchBloodDonorBloodGroup extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Choose A Bood Group");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 157, 20));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 157, 20));
 
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-" }));
@@ -123,13 +123,9 @@ public class SearchBloodDonorBloodGroup extends javax.swing.JFrame {
        
         try{
             
-            
-            
-            Connection con = ConnectionProvider.getCon();
-            Statement statement = con.createStatement();
-            
-            ResultSet rs = statement.executeQuery("select * from donor where bloodGroup = '"+selectedBloodGroup+"'");
-            
+                     
+            SearchClass search = new SearchClass(selectedBloodGroup);
+            ResultSet  rs = search.searchDonor(selectedBloodGroup);
             jTable1.setAutoResizeMode(jTable1.AUTO_RESIZE_OFF);
             jTable1.setModel(DbUtils.resultSetToTableModel(rs));
             

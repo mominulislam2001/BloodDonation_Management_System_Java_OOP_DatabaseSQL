@@ -35,8 +35,7 @@ public class AddDonor extends javax.swing.JFrame {
             while (resultSet.next()) {
              
                id = resultSet.getString("donorId");
-               
-                
+                               
             }
             int newid = Integer.parseInt(id);
             newid = newid + 1;
@@ -278,7 +277,9 @@ public class AddDonor extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
+     
+        
+        
     }//GEN-LAST:event_jTextField4ActionPerformed
 
  

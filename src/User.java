@@ -1,14 +1,14 @@
-public class User {
-    public String fullName;
+public class User extends Individual{
+  
     public String userName;
-    public String email;
     private String password;
 
-    public User(String fullName, String userName, String email, String password) {
-        this.fullName = fullName;
+    public User(String fullName,String email,String userName) {
+        
+        super(fullName,email);
         this.userName = userName;
-        this.email = email;
-        this.password = password;
+        
+   
     }
 
     public void setPassword(String password) {
@@ -19,11 +19,9 @@ public class User {
         return password;
     }
     
+    
+    
+    
   
-
-    
-    
-    
-    
     
 }

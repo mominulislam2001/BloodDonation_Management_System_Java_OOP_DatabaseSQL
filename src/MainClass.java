@@ -1,15 +1,27 @@
-
 import DatabaseConnection.ConnectionProvider;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-public class MainClass {
+public class MainClass implements MainInterface {
     
     
- 
+    public User user ;
+    public Donor donor;
+
+    public MainClass(User user, Donor donor) {
+       
+        this.user = user;
+        this.donor = donor;
+    
+    }
+    
+    public MainClass() {
+             
+    
+    }
+     
     
     public static void main(String[] args){
         
@@ -18,6 +30,7 @@ public class MainClass {
     }
     
     
+    @Override
     public Boolean addUserToDatabase(User user){
         
          try {
@@ -41,7 +54,7 @@ public class MainClass {
                 
                boolean usernameExists = usernameResultSet.next(); // Check if username exists
 
-             // Close the result sets to release resources
+             
              emailResultSet.close();
              usernameResultSet.close();
 
@@ -77,6 +90,7 @@ public class MainClass {
              
     }
     
+    @Override
     public Boolean loginUser(String username,String password){
         
             try{
@@ -119,6 +133,7 @@ public class MainClass {
         
     }
     
+    @Override
      public Boolean addDonorToDatabase(Donor donor){
        
          
@@ -128,7 +143,7 @@ public class MainClass {
             Statement st = con.createStatement();
             
                 
-            st.executeUpdate("insert into donor values('"+donor.donorId+"','"+donor.name+"','"+donor.fatherName+"','"+donor.motherName+"','"+donor.DOB+"','"+donor.mobileNo+"','"+donor.gender+"','"+donor.email+"','"+donor.bloodGroup+"','"+donor.city+"','"+donor.address+"')");
+            st.executeUpdate("insert into donor values('"+donor.donorId+"','"+donor.fullName+"','"+donor.fatherName+"','"+donor.motherName+"','"+donor.DOB+"','"+donor.mobileNo+"','"+donor.gender+"','"+donor.email+"','"+donor.bloodGroup+"','"+donor.city+"','"+donor.address+"')");
             
             JOptionPane.showMessageDialog(null,"Successfully Added New Donor !!");
             return true;
@@ -142,6 +157,7 @@ public class MainClass {
                    
      }
      
+    @Override
      public Boolean updateDonorInfoDatabase(Donor donor){ 
         
          try{
@@ -149,7 +165,7 @@ public class MainClass {
             Connection con = ConnectionProvider.getCon();
             Statement statement = con.createStatement();
             
-            statement.executeUpdate("update donor set name='"+donor.name+"',fatherName='"+donor.fatherName+"',motherName='"+donor.motherName+"',DOB='"+donor.DOB+"',mobileNo='"+donor.mobileNo+"',gender='"+donor.gender+"',email='"+donor.email+"',bloodGroup='"+donor.bloodGroup+"',city='"+donor.city+"',address='"+donor.address+"' where donorId= '"+donor.donorId+"'");
+            statement.executeUpdate("update donor set name='"+donor.fullName+"',fatherName='"+donor.fatherName+"',motherName='"+donor.motherName+"',DOB='"+donor.DOB+"',mobileNo='"+donor.mobileNo+"',gender='"+donor.gender+"',email='"+donor.email+"',bloodGroup='"+donor.bloodGroup+"',city='"+donor.city+"',address='"+donor.address+"' where donorId= '"+donor.donorId+"'");
             
             JOptionPane.showMessageDialog(null,"Succesfully Update");
             
@@ -167,6 +183,7 @@ public class MainClass {
     
     
     
+    @Override
        public Boolean removeDonorFromDatabase(String donorId){
            try{
                        

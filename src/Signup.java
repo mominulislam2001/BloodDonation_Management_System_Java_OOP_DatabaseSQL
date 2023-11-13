@@ -117,7 +117,10 @@ public class Signup extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
+       
+        
+        
+        
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -149,11 +152,8 @@ public class Signup extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Please Enter A Long Password");
 
         } else {
-  
-          
-     
-
-     
+ 
+    
                 String fullName = jTextField1.getText();
       
                 String userName = jTextField2.getText();
@@ -161,10 +161,14 @@ public class Signup extends javax.swing.JFrame {
                 String email = jTextField3.getText();
       
                 String password = upassword;
-
                 
-                User user = new User(fullName,userName,email,password);
+                
+                
+                User user = new User(fullName,email,userName);
+                user.setPassword(password);
+             
                 MainClass mClass = new MainClass();
+             
                 Boolean userAdded = mClass.addUserToDatabase(user);
                     
                 if(userAdded){
@@ -179,7 +183,10 @@ public class Signup extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
-        // TODO add your handling code here:
+  
+        
+        
+        
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     public static void main(String args[]) {

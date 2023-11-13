@@ -1,4 +1,3 @@
-import java.sql.*;
 import DatabaseConnection.ConnectionProvider;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
